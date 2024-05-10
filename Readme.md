@@ -27,8 +27,7 @@
 
  # Copilot in VSCODE:
  1. Install [VSCODE](https://code.visualstudio.com/)
- 2. Install [Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
- 3. Open the project folder in VSCODE and press F1 to open the command palette, then select "Reopen in Container"
+ 2. Install [Continue](https://www.continue.dev)
 
 
 # Other Commands
