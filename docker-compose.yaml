@@ -11,7 +11,7 @@ services:
     ports:
       - '11434:11434'
     volumes:
-      - ~/.ollama:/root/.ollama
+      - ollama:/root/.ollama
     expose:
       - 11434
     networks:
@@ -29,5 +29,6 @@ services:
 
 volumes:
   open-webui:
+  ollama:
 networks:
   ollama: ~

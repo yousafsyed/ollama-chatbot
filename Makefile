@@ -16,8 +16,6 @@ build:
 	docker-compose -p ${COMPONENT} -f docker-compose.yaml build --no-cache
 
 nodev:
-	docker-compose -p ${COMPONENT} -f docker-compose.yaml kill
-	docker-compose  -p ${COMPONENT} -f docker-compose.yaml rm -f
 	docker-compose  -p ${COMPONENT} -f docker-compose.yaml down --remove-orphans
 
 logs:
