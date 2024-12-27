@@ -17,7 +17,7 @@ services:
     networks:
       - ollama
   open-webui:
-    image: ghcr.io/open-webui/open-webui:main
+    image: ghcr.io/open-webui/open-webui:v0.5.2
     ports:
       - '3000:8080'
     volumes:
