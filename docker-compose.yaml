@@ -1,13 +1,13 @@
 services:
   ollama:
     image: ollama/ollama
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
     ports:
       - '11434:11434'
     volumes:
@@ -17,7 +17,7 @@ services:
     networks:
       - ollama
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.5.2
+    image: ghcr.io/open-webui/open-webui:v0.5.7
     ports:
       - '3000:8080'
     volumes:
@@ -26,9 +26,29 @@ services:
       - 3000
     networks:
       - ollama
-
+  openedai-speech:
+    image: ghcr.io/matatonic/openedai-speech
+    env_file: speech.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - openedai-speech:/app/voices
+      - openedai-speech:/app/config
+    # To install as a service
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              #device_ids: ['0', '1'] # Select a gpu, or
+              count: all
+              capabilities: [gpu]
+    networks:
+      - ollama
 volumes:
   open-webui:
   ollama:
+  openedai-speech:
 networks:
   ollama: ~
