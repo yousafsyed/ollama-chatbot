@@ -1,13 +1,13 @@
 services:
   ollama:
     image: ollama/ollama
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: 1
-    #           capabilities: [gpu]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     ports:
       - '11434:11434'
     volumes:
@@ -17,7 +17,7 @@ services:
     networks:
       - ollama
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.5.7
+    image: ghcr.io/open-webui/open-webui:v0.5.9
     ports:
       - '3000:8080'
     volumes:
@@ -41,7 +41,6 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              #device_ids: ['0', '1'] # Select a gpu, or
               count: all
               capabilities: [gpu]
     networks:
