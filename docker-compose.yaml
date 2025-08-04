@@ -17,7 +17,7 @@ services:
     networks:
       - ollama
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.6.0
+    image: ghcr.io/open-webui/open-webui:v0.6.18
     deploy:
       resources:
         reservations:
